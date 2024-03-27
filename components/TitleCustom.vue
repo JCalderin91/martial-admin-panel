@@ -4,6 +4,6 @@
 
 <style scoped>
 .title {
-  color: #cf1212;
+  color: #4b4b4b;
 }
 </style>

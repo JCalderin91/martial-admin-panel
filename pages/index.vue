@@ -1,3 +1,9 @@
+<script setup lang="ts">
+definePageMeta({
+  layout: "admin",
+});
+</script>
+
 <template>
   <div>
     <TitleCustom>Bienvenido a Martial Admin</TitleCustom>
