@@ -2,14 +2,18 @@
 export default {
   data: () => ({
     items: [
-      { text: "Estudiantes", icon: "mdi-account-group" },
-      { text: "Representantes", icon: "mdi-human-male-boy" },
-      { text: "Profesores", icon: "mdi-account-multiple" },
-      { text: "Escuela", icon: "mdi-domain" },
-      { text: "Finanzas", icon: "mdi-finance" },
-      { text: "Reportes", icon: "mdi-calculator" },
-      { text: "Documentos", icon: "mdi-file-account" },
-      { text: "Seguridad", icon: "mdi-security" },
+      { text: "Estudiantes", icon: "mdi-account-group", href: "students" },
+      {
+        text: "Representantes",
+        icon: "mdi-human-male-boy",
+        href: "representants",
+      },
+      { text: "Profesores", icon: "mdi-account-multiple", href: "" },
+      { text: "Escuela", icon: "mdi-domain", href: "" },
+      { text: "Finanzas", icon: "mdi-finance", href: "" },
+      { text: "Reportes", icon: "mdi-calculator", href: "" },
+      { text: "Documentos", icon: "mdi-file-account", href: "" },
+      { text: "Seguridad", icon: "mdi-security", href: "" },
     ],
   }),
 };
@@ -36,6 +40,7 @@ export default {
       :key="i"
       :value="item"
       color="primary"
+      :to="item.href"
     >
       <template v-slot:prepend>
         <v-icon :icon="item.icon"></v-icon>

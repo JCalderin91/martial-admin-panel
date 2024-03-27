@@ -10,18 +10,17 @@ useHead({
 </script>
 
 <template>
-  <v-layout class="rounded rounded-md">
-    <v-app-bar color="surface-variant" title="Martial Admin"></v-app-bar>
-
+  <v-layout>
     <v-navigation-drawer>
       <Menu></Menu>
     </v-navigation-drawer>
 
-    <v-main
-      class="d-flex align-center justify-center"
-      style="min-height: 300px"
-    >
-      <slot />
+    <v-app-bar color="surface-variant" title="Martial Admin"></v-app-bar>
+
+    <v-main>
+      <div class="pa-5">
+        <slot />
+      </div>
     </v-main>
   </v-layout>
 </template>

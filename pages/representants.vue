@@ -4,8 +4,8 @@ definePageMeta({
 });
 const items = [
   {
-    name: "Wendy",
-    lastName: "Hurtado",
+    name: "Jesus",
+    lastName: "Calderin",
     belt: "Amarillo",
     blood: "A+",
   },
@@ -25,7 +25,7 @@ const headers = [
 </script>
 <template>
   <v-card>
-    <v-card-title primary-title> Estudiantes </v-card-title>
+    <v-card-title primary-title> Representantes </v-card-title>
     <v-card-text>
       <v-data-table :headers="headers" :items="items"></v-data-table>
     </v-card-text>
