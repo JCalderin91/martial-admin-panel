@@ -1,18 +1,13 @@
 <script setup>
+import { useStudentStore } from "@/stores/students";
 definePageMeta({
   layout: "admin",
 });
 
-//
-const { data } = await useFetch("https://jsonplaceholder.typicode.com/users");
+const { students, getStudents } = useStudentStore();
 
-const items = data._value.map((user) => {
-  return {
-    name: user.username,
-    lastName: user.name,
-    belt: "Amarillo",
-    blood: "A+",
-  };
+onBeforeMount(() => {
+  getStudents();
 });
 
 const headers = [
@@ -31,7 +26,7 @@ const headers = [
   <v-card>
     <v-card-title primary-title> Estudiantes </v-card-title>
     <v-card-text>
-      <v-data-table :headers="headers" :items="items"></v-data-table>
+      <v-data-table :headers="headers" :items="students"></v-data-table>
     </v-card-text>
   </v-card>
 </template>
