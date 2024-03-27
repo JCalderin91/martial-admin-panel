@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Bienvenido a Martial Admin</h1>
+    <TitleCustom>Bienvenido a Martial Admin</TitleCustom>
     <v-btn color="primary">Button</v-btn>
   </div>
 </template>
