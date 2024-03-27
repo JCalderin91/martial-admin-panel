@@ -2,14 +2,18 @@
 definePageMeta({
   layout: "admin",
 });
-const items = [
-  {
-    name: "Wendy",
-    lastName: "Hurtado",
+
+//
+const { data } = await useFetch("https://jsonplaceholder.typicode.com/users");
+
+const items = data._value.map((user) => {
+  return {
+    name: user.username,
+    lastName: user.name,
     belt: "Amarillo",
     blood: "A+",
-  },
-];
+  };
+});
 
 const headers = [
   {
