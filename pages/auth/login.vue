@@ -14,17 +14,13 @@ const toogleShowPassword = () => {
         </v-card-title>
         <v-card-text>
           <v-text-field
-            density="comfortable"
             prepend-inner-icon="mdi-email"
             label="Correo"
-            variant="solo"
           ></v-text-field>
           <v-text-field
-            density="comfortable"
             prepend-inner-icon="mdi-lock"
             label="Contaseña"
             :type="showPassword ? 'text' : 'password'"
-            variant="solo"
             :append-inner-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
             @click:append-inner="toogleShowPassword"
           ></v-text-field>
