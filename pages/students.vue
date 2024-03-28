@@ -5,9 +5,12 @@ definePageMeta({
 });
 
 const { students, getStudents } = useStudentStore();
+const isLoading = true;
 
 onBeforeMount(() => {
-  getStudents();
+  getStudents().then(() => {
+    isLoading = false;
+  });
 });
 
 const headers = [
@@ -26,7 +29,11 @@ const headers = [
   <v-card>
     <v-card-title primary-title> Estudiantes </v-card-title>
     <v-card-text>
-      <v-data-table :headers="headers" :items="students"></v-data-table>
+      <v-data-table
+        :headers="headers"
+        :items="students"
+        :loading="isLoading"
+      ></v-data-table>
     </v-card-text>
   </v-card>
 </template>
