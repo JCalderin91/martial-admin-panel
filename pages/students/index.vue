@@ -5,11 +5,11 @@ definePageMeta({
 });
 
 const { students, getStudents } = useStudentStore();
-const isLoading = true;
+const isLoading = ref(true);
 
 onBeforeMount(() => {
   getStudents().then(() => {
-    isLoading = false;
+    isLoading.value = false;
   });
 });
 
@@ -25,9 +25,13 @@ const headers = [
   { title: "Tipo de sangre", key: "blood", align: "end" },
 ];
 </script>
+
 <template>
   <v-card>
-    <v-card-title primary-title> Estudiantes </v-card-title>
+    <v-card-title primary-title class="d-flex justify-space-between">
+      Estudiantes
+      <v-btn to="/students/create" color="secondary">Nuevo</v-btn>
+    </v-card-title>
     <v-card-text>
       <v-data-table
         :headers="headers"

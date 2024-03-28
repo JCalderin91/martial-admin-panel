@@ -2,11 +2,11 @@
 export default {
   data: () => ({
     items: [
-      { text: "Estudiantes", icon: "mdi-account-group", href: "students" },
+      { text: "Estudiantes", icon: "mdi-account-group", href: "/students" },
       {
         text: "Representantes",
         icon: "mdi-human-male-boy",
-        href: "representants",
+        href: "/representants",
       },
       { text: "Profesores", icon: "mdi-account-multiple", href: "" },
       { text: "Escuela", icon: "mdi-domain", href: "" },

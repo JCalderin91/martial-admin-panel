@@ -11,7 +11,7 @@ useHead({
       <Menu></Menu>
     </v-navigation-drawer>
 
-    <v-app-bar color="surface-variant" title="Martial Admin"></v-app-bar>
+    <v-app-bar color="primary" title="Martial Admin"></v-app-bar>
 
     <v-main>
       <div class="pa-5">
