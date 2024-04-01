@@ -2,6 +2,9 @@
 useHead({
   title: "Martial Admin",
   meta: [{ name: "description", content: "Martial Admin" }],
+  htmlAttrs: {
+    lang: "es",
+  },
 });
 </script>
 
