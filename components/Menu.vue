@@ -10,6 +10,7 @@ const items = [
   },
   { text: "Profesores", icon: "mdi-account-multiple", href: "" },
   { text: "Academias", icon: "mdi-domain", href: "/academies" },
+  { text: "Cinturones", icon: "mdi-lasso", href: "/belts" },
   { text: "Finanzas", icon: "mdi-finance", href: "" },
   { text: "Reportes", icon: "mdi-calculator", href: "" },
   { text: "Documentos", icon: "mdi-file-account", href: "" },
@@ -49,6 +50,7 @@ const confirmLogout = () => {
           :value="item"
           color="primary"
           :to="item.href"
+          exact
         >
           <template v-slot:prepend>
             <v-icon :icon="item.icon"></v-icon>

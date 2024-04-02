@@ -33,7 +33,7 @@ export const useAcademiesStore = defineStore("counter", {
         return Promise.reject(error);
       }
     },
-    async deleteAcademyById(id: number) {
+    async deleteById(id: number) {
       try {
         this.academy = null;
         await Academy.deleteById(id);

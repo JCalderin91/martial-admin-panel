@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAcademiesStore } from "@/stores/academies";
+import { useBeltsStore } from "@/stores/belts";
 import { onMounted } from "vue";
 import { Dialog, Toast } from "@/utils/sweetalert";
 
@@ -7,11 +7,11 @@ definePageMeta({
   layout: "admin",
 });
 
-const AcademyStore = useAcademiesStore();
+const BeltStore = useBeltsStore();
 const isLoading = ref(true);
 
 onMounted(() => {
-  AcademyStore.getAll().then(() => {
+  BeltStore.getAll().then(() => {
     isLoading.value = false;
   });
 });
@@ -23,9 +23,7 @@ const headers: any = [
     sortable: false,
     key: "name",
   },
-  { title: "Direccion", key: "address", align: "end" },
-  { title: "email", key: "email", align: "end" },
-  { title: "Phone", key: "phone", align: "end" },
+  { title: "Imagen", key: "icon", align: "end" },
   { title: "Acciones", key: "actions", align: "end" },
 ];
 const deleteRow = (id: number) => {
@@ -37,7 +35,7 @@ const deleteRow = (id: number) => {
     if (result.isConfirmed) {
       try {
         isLoading.value = true;
-        await AcademyStore.deleteById(id);
+        await BeltStore.deleteById(id);
         Toast.preset({ mode: "delete", type: "success" });
       } catch (error) {
         Toast.preset({ mode: "delete", type: "error" });
@@ -52,19 +50,19 @@ const deleteRow = (id: number) => {
 <template>
   <v-card>
     <v-card-title primary-title class="d-flex justify-space-between">
-      Academias
-      <v-btn to="/academies/create" color="secondary">Nuevo</v-btn>
+      Cinturones
+      <v-btn to="/belts/create" color="secondary">Nuevo</v-btn>
     </v-card-title>
     <v-card-text>
       <v-data-table
         :headers="headers"
-        :items="AcademyStore.academies"
+        :items="BeltStore.belts"
         :loading="isLoading"
       >
         <template v-slot:item.actions="{ item }">
           <div class="d-flex justify-end ga-1">
             <v-btn
-              :to="`/academies/${item.id}`"
+              :to="`/belts/${item.id}`"
               icon
               density="comfortable"
               variant="outlined"

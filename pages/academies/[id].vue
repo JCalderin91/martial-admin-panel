@@ -42,7 +42,7 @@ onMounted(async () => {
     const response = await AcademyStore.getById(Number(route.params.id));
     academy.value = { ...response };
   } catch (error) {
-    Toast.fire({ icon: "error", title: "Error al obtener información!" });
+    Toast.preset({ mode: "get", type: "error" });
   } finally {
     isLoading.value = false;
   }
