@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Dialog } from "@/utils/sweetalert";
 const items = [
   { text: "Inicio", icon: "mdi-home", href: "/" },

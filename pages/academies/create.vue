@@ -13,10 +13,10 @@ const academy = reactive({});
 const handleSubmit = async () => {
   try {
     await academyStore.create(academy);
-    Toast.fire({ icon: "success", title: "Guardado exitosamente!" });
+    Toast.preset({ mode: "create", type: "success" });
     await navigateTo("/academies");
   } catch (error) {
-    Toast.fire({ icon: "error", title: "Error al guardar!" });
+    Toast.preset({ mode: "create", type: "error" });
   }
 };
 

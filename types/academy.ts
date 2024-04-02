@@ -1,5 +1,5 @@
 export interface AcademyInterface {
-  id: number;
+  id?: number | null;
   name: string;
   address: string;
   logo: string;

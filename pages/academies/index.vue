@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { useAcademiesStore } from "@/stores/academies";
 import { onMounted } from "vue";
-import { Dialog } from "@/utils/sweetalert";
+import { Dialog, Toast } from "@/utils/sweetalert";
 
 definePageMeta({
   layout: "admin",
@@ -16,7 +16,7 @@ onMounted(() => {
   });
 });
 
-const headers = [
+const headers: any = [
   {
     title: "Nombre",
     align: "start",
@@ -28,7 +28,7 @@ const headers = [
   { title: "Phone", key: "phone", align: "end" },
   { title: "Acciones", key: "actions", align: "end" },
 ];
-const deleteRow = (id) => {
+const deleteRow = (id: number) => {
   Dialog.fire({
     title: "¿Está seguro de eliminar?",
     text: "Esta acción no se podrá deshacer!",
@@ -38,9 +38,9 @@ const deleteRow = (id) => {
       try {
         isLoading.value = true;
         await AcademyStore.deleteAcademyById(id);
-        Toast.fire({ icon: "success", title: "Eliminado exitosamente!" });
+        Toast.preset({ mode: "delete", type: "success" });
       } catch (error) {
-        Toast.fire({ icon: "error", title: "Error al eliminar!" });
+        Toast.preset({ mode: "delete", type: "error" });
       } finally {
         isLoading.value = false;
       }
@@ -72,7 +72,7 @@ const deleteRow = (id) => {
               ><v-icon>mdi-pen</v-icon></v-btn
             >
             <v-btn
-              @click="deleteRow(item.id)"
+              @click="deleteRow(Number(item.id || 0))"
               icon
               density="comfortable"
               variant="outlined"

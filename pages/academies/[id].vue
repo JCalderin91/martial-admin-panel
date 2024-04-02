@@ -3,6 +3,7 @@ import { useAcademiesStore } from "@/stores/academies";
 import { Toast } from "@/utils/sweetalert";
 import UploadImage from "@/components/UploadImage.vue";
 import { rules } from "@/utils/rules";
+import type { AcademyInterface } from "~/types/academy";
 
 const route = useRoute();
 
@@ -11,21 +12,34 @@ definePageMeta({
 });
 
 const AcademyStore = useAcademiesStore();
-const academy = ref({});
+const academy = ref<AcademyInterface>({
+  id: null,
+  name: "",
+  address: "",
+  logo: "",
+  email: "",
+  phone: "",
+  created_at: "",
+  updated_at: "",
+  deleted_at: "",
+});
+const isLoading = ref(false);
 
 const handleSubmit = async () => {
   try {
+    if (!academy.value.id) return;
     await AcademyStore.updateById(academy.value.id, academy.value);
-    Toast.fire({ icon: "success", title: "Actualizado exitosamente!" });
+    Toast.preset({ mode: "put", type: "success" });
     await navigateTo("/academies");
   } catch (error) {
-    Toast.fire({ icon: "error", title: "Error al actualizar!" });
+    Toast.preset({ mode: "put", type: "error" });
   }
 };
 
 onMounted(async () => {
   try {
-    const response = await AcademyStore.getById(route.params.id);
+    if (!route.params.id) return;
+    const response = await AcademyStore.getById(Number(route.params.id));
     academy.value = { ...response };
   } catch (error) {
     Toast.fire({ icon: "error", title: "Error al obtener información!" });
@@ -33,7 +47,7 @@ onMounted(async () => {
     isLoading.value = false;
   }
 });
-const handleLogo = (event) => {
+const handleLogo = (event: any) => {
   academy.value.logo = event.target.value;
 };
 </script>
