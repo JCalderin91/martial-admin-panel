@@ -18,8 +18,14 @@ useHead({
 
     <v-main>
       <div class="pa-5">
-        <slot />
+        <slot></slot>
       </div>
     </v-main>
   </v-layout>
 </template>
+
+<style>
+.v-application__wrap {
+  min-height: calc(100dvh - 105px);
+}
+</style>
